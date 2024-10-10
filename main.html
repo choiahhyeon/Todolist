@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>main</title>
+    <style>
+        #container {
+            width: 500px;
+            margin: auto;
+        }
+        h2 {
+            background-color: purple;
+            padding: 10px;
+            text-align: center;
+            color: white;
+            margin-bottom: 0%;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        body {
+            background-color: plum;
+        }
+        #list {
+            background-color: white;
+            padding-top: 250px;
+            padding-bottom: 200px;
+            text-align: justify;
+            margin-bottom: 10px;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            color: gray;
+        }
+        #text {
+            flex-grow: 1;
+            padding: 8px;
+            color: gray;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+        }
+        button {
+            background-color: purple;
+            color: white;
+            padding: 8px;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+        .input-container {
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+    <h2>To Do List</h2>
+    <ul id="list">
+        <li>오늘 할 일</li>
+    </ul>
+    <div class="input-container">
+        <input id="text" type="text" name="new to do" value="add new to do">
+        <button>+add new</button></div>
+    </div>
+</body>
+</html>

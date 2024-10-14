@@ -25,11 +25,16 @@
             background-color: white;
             padding-top: 250px;
             padding-bottom: 200px;
-            text-align: justify;
+            margin-top: 0%;
             margin-bottom: 10px;
             border-bottom-left-radius: 10px;
             border-bottom-right-radius: 10px;
             color: gray;
+            vertical-align: baseline;
+        }
+        input:checked {
+        background-color: aqua;
+
         }
         #text {
             flex-grow: 1;
@@ -54,7 +59,7 @@
     <div id="container">
     <h2>To Do List</h2>
     <ul id="list">
-        <li>오늘 할 일</li>
+        <input type="checkbox"> 오늘 할 일
     </ul>
     <div class="input-container">
         <input id="text" type="text" name="new to do" value="add new to do">

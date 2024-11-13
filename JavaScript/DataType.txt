@@ -1,0 +1,31 @@
+alert(1);
+undefined
+alert(1+1);
+undefined
+1+1
+2
+2-1
+1
+2*4
+8
+6/2
+3
+"Hello world"
+'Hello world'
+'Hello world' .length
+11
+'Hello world' .toLocaleUpperCase()  <- 소문자를 대문자로
+'HELLO WORLD'
+'Hello world' .indexOf('o')
+4
+'Hello world' .indexOf('world')
+6
+'              hello            '
+'              hello            '
+'              hello            '.trim()
+
+'hello'
+1+1
+2
+"1"+"1"
+'11'

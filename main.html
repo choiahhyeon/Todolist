@@ -23,14 +23,15 @@
         }
         #list {
             background-color: white;
-            padding-top: 250px;
-            padding-bottom: 200px;
+            height: 450px;
+            padding: 10px;
             margin-top: 0%;
             margin-bottom: 10px;
             border-bottom-left-radius: 10px;
             border-bottom-right-radius: 10px;
             color: gray;
-            vertical-align: baseline;
+            list-style: none;
+            overflow: auto;
         }
         #text {
             flex-grow: 1;
@@ -49,17 +50,64 @@
         .input-container {
             display: flex;
         }
+        .todo-item {
+            display: flex;
+            align-items: center;
+            padding: 5px 0;
+        }
+        .todo-item input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        .completed {
+            text-decoration: line-through;
+            color: gray;
+        }
     </style>
 </head>
 <body>
     <div id="container">
-    <h2>To Do List</h2>
-    <ul id="list">
-        <input type="checkbox"> 오늘 할 일
-    </ul>
-    <div class="input-container">
-        <input id="text" type="text" name="new to do" value="add new to do">
-        <button>+add new</button></div>
+        <h2>To Do List</h2>
+        <ul id="list">
+        </ul>
+        <div class="input-container">
+            <input id="text" type="text" placeholder="Add new to do">
+            <button onclick="addTodo()">+ Add New</button>
+        </div>
     </div>
+    <script>
+        function addTodo() {
+            const textInput = document.getElementById('text');
+            const todoText = textInput.value.trim();
+            if (todoText === '') {
+                alert('Please enter a to-do item.');
+                return;
+            }
+
+            const listItem = document.createElement('li');
+            listItem.className = 'todo-item';
+
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+
+            const textSpan = document.createElement('span');
+            textSpan.textContent = todoText;
+
+            checkbox.addEventListener('change', function () {
+                if (checkbox.checked) {
+                    textSpan.classList.add('completed');
+                } else {
+                    textSpan.classList.remove('completed');
+                }
+            });
+
+            listItem.appendChild(checkbox);
+            listItem.appendChild(textSpan);
+
+            const list = document.getElementById('list');
+            list.insertBefore(listItem, list.firstChild);
+
+            textInput.value = '';
+        }
+    </script>
 </body>
 </html>

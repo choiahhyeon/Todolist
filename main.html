@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>main</title>
+    <title>To-Do List</title>
     <style>
         #container {
             width: 500px;
@@ -32,6 +32,7 @@
             color: gray;
             list-style: none;
             overflow: auto;
+            text-align: left;
         }
         #text {
             flex-grow: 1;
@@ -46,6 +47,7 @@
             padding: 8px;
             border-top-right-radius: 10px;
             border-bottom-right-radius: 10px;
+            margin-left: 5px;
         }
         .input-container {
             display: flex;
@@ -54,13 +56,37 @@
             display: flex;
             align-items: center;
             padding: 5px 0;
+            justify-content: space-between;
         }
         .todo-item input[type="checkbox"] {
             margin-right: 10px;
         }
+        .todo-item .buttons {
+            display: flex;
+            margin-left: auto;
+        }
         .completed {
             text-decoration: line-through;
             color: gray;
+        }
+        .buttons button {
+            font-size: 14px;
+            padding: 6px 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-left: 5px;
+        }
+        .buttons button:first-child {
+            background-color: lightgrey;
+            color: black;
+        }
+        .buttons button:last-child {
+            background-color: tomato;
+            color: white;
+        }
+        .buttons button:last-child:hover {
+            background-color: tomato;
         }
     </style>
 </head>
@@ -100,8 +126,30 @@
                 }
             });
 
+            const buttonsDiv = document.createElement('div');
+            buttonsDiv.className = 'buttons';
+
+            const editButton = document.createElement('button');
+            editButton.textContent = '수정';
+            editButton.addEventListener('click', function () {
+                const newText = prompt('Edit your to-do item:', textSpan.textContent);
+                if (newText !== null && newText.trim() !== '') {
+                    textSpan.textContent = newText.trim();
+                }
+            });
+
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = '삭제';
+            deleteButton.addEventListener('click', function () {
+                listItem.remove();
+            });
+
+            buttonsDiv.appendChild(editButton);
+            buttonsDiv.appendChild(deleteButton);
+
             listItem.appendChild(checkbox);
             listItem.appendChild(textSpan);
+            listItem.appendChild(buttonsDiv);
 
             const list = document.getElementById('list');
             list.insertBefore(listItem, list.firstChild);

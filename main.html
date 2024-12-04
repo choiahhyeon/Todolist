@@ -132,10 +132,19 @@
             const editButton = document.createElement('button');
             editButton.textContent = '수정';
             editButton.addEventListener('click', function () {
-                const newText = prompt('Edit your to-do item:', textSpan.textContent);
-                if (newText !== null && newText.trim() !== '') {
-                    textSpan.textContent = newText.trim();
-                }
+                textSpan.contentEditable = true;
+                textSpan.focus();
+
+                textSpan.addEventListener('keypress', function (event) {
+                    if (event.key === 'Enter') {
+                        textSpan.contentEditable = false;
+                        event.preventDefault();
+                    }
+                });
+
+                textSpan.addEventListener('blur', function () {
+                    textSpan.contentEditable = false;
+                });
             });
 
             const deleteButton = document.createElement('button');
